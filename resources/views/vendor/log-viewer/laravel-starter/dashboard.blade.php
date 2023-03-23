@@ -62,7 +62,7 @@ $module_icon = "fa-solid fa-list-check";
                             <div class="box-content">
                                 <span class="box-text">{{ $item['name'] }}</span>
                                 <span class="box-number">
-                                    {{ $item['count'] }} entries - {!! $item['percent'] !!} %
+                                    {{ $item['count'] }} @lang('entries') - {!! $item['percent'] !!} %
                                 </span>
                                 <div class="progress" style="height: 3px;">
                                     <div class="progress-bar" style="width: {{ $item['percent'] }}%"></div>

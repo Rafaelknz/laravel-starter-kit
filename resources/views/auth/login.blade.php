@@ -14,7 +14,7 @@
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <!-- Social Login -->
-        <x-auth-social-login />
+{{--        <x-auth-social-login />--}}
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
@@ -60,7 +60,7 @@
         <x-slot name="extra">
             @if (Route::has('register'))
             <p class="text-center text-gray-600 mt-4">
-                Do not have an account? <a href="{{ route('register') }}" class="underline hover:text-gray-900">Register</a>.
+                {{ __('Do not have an account?') }} <a href="{{ route('register') }}" class="underline hover:text-gray-900">{{ __('Register') }}</a>.
             </p>
             @endif
         </x-slot>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,6 @@ require __DIR__.'/auth.php';
 // Language Switch
 Route::get('language/{language}', [LanguageController::class, 'switch'])->name('language.switch');
 
-Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index')->name('dashboard');
 /*
 *
 * Frontend Routes
@@ -28,12 +28,10 @@ Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index'
 * --------------------------------------------------------------------
 */
 Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.'], function () {
-    Route::get('/', 'FrontendController@index')->name('index');
-    Route::get('home', 'FrontendController@index')->name('home');
-    Route::get('privacy', 'FrontendController@privacy')->name('privacy');
-    Route::get('terms', 'FrontendController@terms')->name('terms');
+    Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('index');
 
     Route::group(['middleware' => ['auth']], function () {
+        Route::get('/dashboard', 'App\Http\Controllers\Frontend\FrontendController@index')->name('dashboard');
         /*
         *
         *  Users Routes

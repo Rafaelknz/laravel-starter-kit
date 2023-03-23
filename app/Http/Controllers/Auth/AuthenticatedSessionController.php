@@ -42,7 +42,8 @@ class AuthenticatedSessionController extends Controller
 
             event(new UserLoginSuccess($request, auth()->user()));
 
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->to('/dashboard');
+//            return redirect()->intended(RouteServiceProvider::HOME);
         }
 
         return back()->withErrors([

@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="{{asset('img/favicon.png')}}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/favicon.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('img/android-chrome-192x192.png')}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/android-chrome-192x192.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ setting('meta_description') }}">
     <meta name="keyword" content="{{ setting('meta_keyword') }}">

@@ -15,6 +15,44 @@ class GenerateMenus
      */
     public function handle($request, Closure $next)
     {
+
+        \Menu::make('user_sidebar', function ($menu) {
+            // Dashboard
+            $menu->add('<i class="nav-icon fa-solid fa-user"></i> '.__('Users'), [
+                'route' => 'backend.dashboard',
+                'class' => 'nav-item',
+            ])
+                ->data([
+                    'order' => 1,
+                    'activematches' => 'admin/dashboard*',
+                ])
+                ->link->attr([
+                    'class' => 'nav-link',
+                ]);
+
+            // Access Permission Check
+            $menu->filter(function ($item) {
+                return true;
+            });
+
+            // Set Active Menu
+            $menu->filter(function ($item) {
+                if ($item->activematches) {
+                    $activematches = (is_string($item->activematches)) ? [$item->activematches] : $item->activematches;
+                    foreach ($activematches as $pattern) {
+                        if (request()->is($pattern)) {
+                            $item->active();
+                            $item->link->active();
+                            if ($item->hasParent()) {
+                                $item->parent()->active();
+                            }
+                        }
+                    }
+                }
+
+                return true;
+            });
+        })->sortBy('order');
         \Menu::make('admin_sidebar', function ($menu) {
             // Dashboard
             $menu->add('<i class="nav-icon fa-solid fa-cubes"></i> '.__('Dashboard'), [
