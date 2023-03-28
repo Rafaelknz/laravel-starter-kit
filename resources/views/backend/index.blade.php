@@ -24,9 +24,8 @@
         </x-backend.section-header>
 
         <hr>
-
         <!-- Dashboard Content Area -->
-        
+
         <!-- / Dashboard Content Area -->
 
     </div>

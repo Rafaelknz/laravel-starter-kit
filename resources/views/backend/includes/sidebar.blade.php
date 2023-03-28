@@ -11,7 +11,6 @@
             <use xlink:href="assets/brand/coreui.svg#signet"></use>
         </svg> -->
     </div>
-{{--    If auth user is not super admin first --}}
     @if(!auth()->user()->hasRole('super admin'))
         {!! $user_sidebar->asUl( ['class' => 'sidebar-nav', 'data-coreui'=>'navigation', 'data-simplebar'], ['class' => 'nav-group-items'] ) !!}
     @else

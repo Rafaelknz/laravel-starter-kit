@@ -18,6 +18,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
+        if (Auth::check()) {
+            return redirect()->route('frontend.dashboard');
+        }
         return view('auth.login');
     }
 
@@ -36,7 +39,6 @@ class AuthenticatedSessionController extends Controller
         $email = $request->email;
         $password = $request->password;
         $remember = $request->remember_me;
-
         if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1], $remember)) {
             $request->session()->regenerate();
 
